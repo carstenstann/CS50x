@@ -4,19 +4,23 @@
 int main(void)
 {
     int h;
+    // Obtain height of pyramid
     do
     {
         h = get_int("%s", "Height: ");
     }
-    while (h < 1 || h > 8 );
-
+    while (h < 1 || h > 8);
+    
+    // Print pyramid
     for (int i = 0; i < h; i++)
     {
-        for (int j = i; j < h - 1; j++)
+        // Right align pyrmaid blocks using spaces
+        for (int s = i; s < h - 1; s++)
         {
             printf(" ");
         }
-        for (int k = 0; k < i + 1; k++)
+        // Pringt pyrmaid blocks
+        for (int b = 0; b < i + 1; b++)
         {
             printf("#");
         }
