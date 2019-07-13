@@ -11,33 +11,33 @@ int main(void)
     {
         amt = get_float("How much change is owed? ");
     }
-    while(amt < 0);
+    while (amt < 0);
     
     // Calculate total number of cents
-    int change = round(amt*100);
+    int change = round(amt * 100);
     
     int quarters = 0, dimes = 0, nickels = 0, pennies = 0;
     
     // Calculate number of quarters needed
-    while(change >= 25)
+    while (change >= 25)
     {
         quarters++;
         change -= 25;
     }
     // Calculate number of dimes needed
-    while(change >= 10)
+    while (change >= 10)
     {
         dimes++;
         change -= 10;
     }
     // Calculate number of nickels needed
-    while(change >= 5)
+    while (change >= 5)
     {
         nickels++;
-        change -=5;
+        change -= 5;
     }
     // Calculate number of pennies needed
-    while(change >= 1)
+    while (change >= 1)
     {
         pennies++;
         change--;
