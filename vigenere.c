@@ -14,6 +14,8 @@ int main(int argc, string argv[])
         printf("Usage: ./vigenere keyword\n");
         return 0;
     } 
+    
+    // Save key in string s 
     string s = argv[1];
     
     int type;
@@ -30,15 +32,42 @@ int main(int argc, string argv[])
     
     // Prompt user for secret message
     string plaintext = get_string("plaintext: ");
+    
     string ciphertext = plaintext;
-    int key;
+    int key_position = 0;
+    int key_length = strlen(s);
+    int shift_value;
+    // Interate over each char in plain text and encode it as ciphertext
     for (int i = 0, n = strlen(plaintext); i < n; i ++)
     {
-        key = shift(argv[1][0]);
-        ciphertext[i] = cipherchar(plaintext[i], key = shift(argv[1][0]));
+        // Calculate shift value given by specific key position
+        shift_value = shift(s[key_position % key_length]);
+    
+        // Shift upper case letters 
+        if (plaintext[i] >= 'A' && plaintext[i] <= 'Z')
+        {
+            ciphertext[i] = (plaintext[i] + shift_value - ('A')) % 26 + 'A';
+            // Increment key position
+            key_position++;
+               
+        }
+        // Shift lower case letters
+        else if (plaintext[i] >= 'a' && plaintext[i] <= 'z')
+        {
+            ciphertext[i] = (plaintext[i] + shift_value - ('a')) % 26 + 'a';
+            // Increment key position 
+            key_position++;
+        }
+        // If not alphabetic character, return plaintext
+        else
+        {
+            // Do not encode non-alphabetic characters, do not increment key position
+            ciphertext[i] = plaintext[i];
+        }    
     }
     
-    printf("ciphertext: ");
+    // print ciphertext
+    printf("ciphertext: %s\n", ciphertext);
     return 0;   
 }
 
@@ -48,27 +77,4 @@ int shift(char c)
     char c_lower = tolower(c);
     int shift = (c_lower - 'a') % 26;
     return shift;
-}
-
-char cipherchar(char plainchar, int key)
-{
-    char cipherchar;
-    
-    // Shift upper case letters
-    if (plainchar >= 'A' && plainchar <= 'Z')
-    {
-        cipherchar = (plainchar + key - ('A')) % 26 + 'A';
-        return cipherchar;     
-    }
-    // Shift lower case letters
-    else if (plainchar >= 'a' && plainchar <= 'z')
-    {
-        cipherchar = (plainchar + key - ('a')) % 26 + 'a';
-        return cipherchar;   
-    }
-    // If not alphabetic character, return plaintext
-    else
-    {
-        return plainchar;
-    }    
 }
