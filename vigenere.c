@@ -4,7 +4,6 @@
 #include <string.h>
 
 int shift(char c);
-char cipherchar(char plaintext, int shift);
 
 int main(int argc, string argv[])
 {
