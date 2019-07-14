@@ -12,7 +12,7 @@ int main(int argc, string argv[])
     if (argc != 2)
     { 
         printf("Usage: ./vigenere keyword\n");
-        return 0;
+        return 1;
     } 
     
     // Save key in string s 
