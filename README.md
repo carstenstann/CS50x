@@ -1,2 +1,2 @@
 # CS50x
-Repository for my Harvard's CS50x course
+Repository for Harvard's CS50x course from 2019.
