@@ -1,4 +1,4 @@
-# CS50x
+# CS50x Fall 2019
 Repository for Harvard's [CS50x course from 2019.](https://cs50.harvard.edu/college/2019/fall/)
 
 ### Problem Sets:
